@@ -1,33 +1,27 @@
 import './App.css';
-import ApolloClient from 'apollo-boost';
+import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks'
 import React from 'react';
-import logo from './logo.svg';
+import Characters from './containers/Characters';
+import { BrowserRouter } from 'react-router-dom';
+import {}
+// import logo from './logo.svg';
 
 const client = new ApolloClient({
-  uri: 'https://rickandmortyapi.com/graphql/'
+  uri: 'https://rickandmortyapi.com/graphql/',
+  cache: new InMemoryCache()
 })
 
 function App() {
   return (
+    <BrowserRouter>
     <ApolloProvider client={client}>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        
+        <Characters />
       </div>
-    </ApolloProvider>
+      </ApolloProvider>
+      </BrowserRouter>
   );
 }
 

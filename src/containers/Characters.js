@@ -1,15 +1,23 @@
 import React from 'react';
-import { gql } from 'apollo-boost';
-import { useQuery } from '@apollo/react-hooks'
-
-const GET_CHARACTERS = gql`
-  query {
-
-  }
-`
+import { useCharacters } from '../containers/useCharacters';
+import "../Characters.css";
 
 export default function Characters() {
-  const { data } = useQuery(GET_CHARACTERS);
+  const { loading, error, data } = useCharacters();  
+  if (loading) return (
+    <div>Spinner...</div>
+  )
 
-  return null;
+  if (error) return (
+    <div>Something went wrong</div>
+  )
+
+  return <div className="Characters">
+    {data.characters.results.map(character => {
+      return (<div>
+        <img src={character.image} />
+        <h2>{character.name}</h2>
+      </div>)
+    })}
+  </div>
 }
