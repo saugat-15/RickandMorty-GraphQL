@@ -20,14 +20,11 @@ function App() {
     <BrowserRouter>
       <ApolloProvider client={client}>
         <div className="App">
-          {/* <Switch> */}
-          <Routes>
+            <Routes>
             <Route path="/" element={<Characters />} />
             <Route path="/search" element={<Search />} />
             <Route path="/:id" element={<CharacterDetails />} />
           </Routes>
-
-          {/* </Switch> */}
         </div>
       </ApolloProvider>
     </BrowserRouter>
