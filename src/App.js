@@ -4,7 +4,7 @@ import { ApolloProvider } from '@apollo/react-hooks'
 import React from 'react';
 import Characters from './containers/Characters';
 import { BrowserRouter } from 'react-router-dom';
-import {}
+
 // import logo from './logo.svg';
 
 const client = new ApolloClient({
